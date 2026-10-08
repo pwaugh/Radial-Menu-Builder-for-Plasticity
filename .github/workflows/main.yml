@@ -15,6 +15,9 @@ jobs:
           - platform: 'macos-latest'
             args: '--target aarch64-apple-darwin'
             rust-target: 'aarch64-apple-darwin'
+          - platform: 'macos-latest'
+            args: '--target x86_64-apple-darwin'
+            rust-target: 'x86_64-apple-darwin'
           - platform: 'windows-latest'
             args: ''
             rust-target: ''
@@ -52,7 +55,7 @@ jobs:
           releaseName: 'Radial Menu Builder++ for Plasticity v__VERSION__'
           releaseBody: |
             Download and install this version.
-
+ 
             Radial Menu Builder++ for Plasticity is the new name for Plasticity Radial Menu Builder. On Windows the installer replaces the old version,
             and your themes, matcap collections and settings are kept. On a Mac, drag the new app into
             Applications, then you can delete "Plasticity Radial Menu Builder" from Applications.
@@ -107,5 +110,5 @@ jobs:
         if: matrix.platform == 'macos-latest'
         uses: actions/upload-artifact@v4
         with:
-          name: macos-installation-guide
+          name: macos-installation-guide-${{ matrix.rust-target }}
           path: INSTALL-MACOS.md
